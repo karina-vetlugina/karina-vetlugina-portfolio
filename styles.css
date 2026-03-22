@@ -552,10 +552,6 @@ a:hover {
     justify-content: center;
   }
 
-  .hero-social {
-    justify-content: center;
-  }
-
   .hero-portrait {
     justify-self: center;
     max-width: min(17.5rem, 78vw);
@@ -662,6 +658,15 @@ html.force-signature-fallback .hero-name {
   display: flex;
   gap: 1.25rem;
   justify-content: flex-start;
+}
+
+@media (max-width: 960px) {
+  .hero-social {
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+  }
 }
 
 .social-link {
