@@ -214,3 +214,61 @@
   }
   window.addEventListener("load", syncHeroSignatureFallback);
 })();
+
+(function () {
+  "use strict";
+
+  var storageKey = "portfolio-scroll-y";
+
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
+  function getNavigationType() {
+    if (!performance || typeof performance.getEntriesByType !== "function") {
+      return "";
+    }
+    var navEntries = performance.getEntriesByType("navigation");
+    if (!navEntries || !navEntries.length) {
+      return "";
+    }
+    return navEntries[0].type || "";
+  }
+
+  function saveScrollPosition() {
+    try {
+      localStorage.setItem(storageKey, String(window.scrollY || 0));
+    } catch (e) {}
+  }
+
+  var navigationType = getNavigationType();
+  var isReload = navigationType === "reload";
+
+  if (isReload) {
+    window.scrollTo(0, 0);
+  } else if (!window.location.hash) {
+    try {
+      var saved = Number(localStorage.getItem(storageKey) || "0");
+      if (saved > 0) {
+        window.requestAnimationFrame(function () {
+          window.scrollTo(0, saved);
+        });
+      }
+    } catch (e) {}
+  }
+
+  var ticking = false;
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        saveScrollPosition();
+        ticking = false;
+      });
+    },
+    { passive: true }
+  );
+  window.addEventListener("pagehide", saveScrollPosition);
+})();
