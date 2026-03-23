@@ -1176,6 +1176,20 @@ html.force-signature-fallback .hero-name {
   text-align: center;
 }
 
+.folder-stack-hint--touch {
+  display: none;
+}
+
+@media (hover: none) {
+  .folder-stack-hint--hover {
+    display: none;
+  }
+
+  .folder-stack-hint--touch {
+    display: inline;
+  }
+}
+
 .folder-stack {
   display: flex;
   flex-direction: column;
