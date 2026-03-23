@@ -13,7 +13,7 @@ A single-page professional portfolio for **Karina Vetlugina**, an aspiring Busin
 - **Academic projects** shown as an interactive stacked “folder” UI (`<details>` / summary) with keyboard support and single-open accordion behavior (opening a folder closes the previous one).
 - **Resume & cover letter** access through a styled envelope interaction (hover on desktop, tap on touch).
 - **Fixed header** with scroll-direction behavior: hides when scrolling down, returns when scrolling up (disabled when `prefers-reduced-motion` is set or when the mobile menu is open).
-- **Open Graph** metadata (`og:title`, `og:description`, `og:type`, `og:url`, `og:site_name`) for link previews on social apps and messengers.
+- **Open Graph** metadata (`og:title`, `og:description`, `og:type`, `og:url`, `og:image`, `og:site_name`) for link previews on social apps and messengers.
 
 ---
 
