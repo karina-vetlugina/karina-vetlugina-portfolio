@@ -102,6 +102,8 @@ main {
   margin: 0;
   overflow-x: clip;
   max-width: 100%;
+  position: relative;
+  z-index: 0;
 }
 
 body {
@@ -130,7 +132,7 @@ h3 {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 100;
+  z-index: 110;
   padding: 0.75rem 1rem;
   background: var(--color-heading);
   color: var(--color-surface);
@@ -183,7 +185,7 @@ a:hover {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 60;
   background: var(--color-header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
@@ -314,6 +316,10 @@ a:hover {
 }
 
 @media (max-width: 960px) {
+  .site-header {
+    z-index: 100;
+  }
+
   .nav-toggle {
     display: flex;
   }
