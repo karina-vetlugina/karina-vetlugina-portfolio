@@ -1064,14 +1064,6 @@ html.force-signature-fallback .hero-name {
   .envelope-hitbox.is-open .envelope-paper-ui {
     pointer-events: auto;
   }
-
-  .folder-stack-hint--hover {
-    display: none;
-  }
-
-  .folder-stack-hint--touch {
-    display: inline;
-  }
 }
 
 .card-grid {
@@ -1211,6 +1203,16 @@ html.force-signature-fallback .hero-name {
   display: none;
 }
 
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .folder-stack-hint--hover {
+    display: none;
+  }
+
+  .folder-stack-hint--touch {
+    display: inline;
+  }
+}
+
 .folder-stack {
   display: flex;
   flex-direction: column;
@@ -1220,16 +1222,6 @@ html.force-signature-fallback .hero-name {
   margin-inline: auto;
   padding: 3.75rem 0 3.25rem;
   list-style: none;
-}
-
-.folder-stack:has(.folder-item[open]) .folder-item:not([open]) {
-  pointer-events: none;
-}
-
-.folder-stack:has(.folder-item[open]) .folder-item[open] + .folder-item .folder-tab {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 @media (max-width: 768px) {
@@ -1386,7 +1378,7 @@ html.force-signature-fallback .hero-name {
   z-index: 52;
 }
 
-.folder-stack:has(.folder-item[open]) .folder-item[open] ~ .folder-item:not(:hover) {
+.folder-stack:has(.folder-item[open]) .folder-item[open] ~ .folder-item:not([open]):not(:hover) {
   z-index: 43;
 }
 

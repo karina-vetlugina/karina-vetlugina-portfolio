@@ -10,7 +10,7 @@ A single-page professional portfolio for **Karina Vetlugina**, an aspiring Busin
 
 - **Responsive layout** with a collapsible navigation menu on smaller viewports.
 - **Accessible patterns:** skip link, semantic sections, ARIA where appropriate, and reduced-motion–aware behavior.
-- **Academic projects** shown as an interactive stacked “folder” UI (`<details>` / summary) with keyboard support and single-open accordion behavior.
+- **Academic projects** shown as an interactive stacked “folder” UI (`<details>` / summary) with keyboard support and single-open accordion behavior (opening a folder closes the previous one).
 - **Resume & cover letter** access through a styled envelope interaction (hover on desktop, tap on touch).
 - **Fixed header** with scroll-direction behavior: hides when scrolling down, returns when scrolling up (disabled when `prefers-reduced-motion` is set or when the mobile menu is open).
 - **Open Graph** metadata (`og:title`, `og:description`, `og:url`, `og:site_name`) for link previews on social apps and messengers.
