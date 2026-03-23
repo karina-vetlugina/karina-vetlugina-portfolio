@@ -241,20 +241,37 @@
     } catch (e) {}
   }
 
+  function referrerIsSameOrigin() {
+    var ref = document.referrer;
+    if (!ref) return false;
+    try {
+      return new URL(ref).origin === window.location.origin;
+    } catch (e) {
+      return false;
+    }
+  }
+
   var navigationType = getNavigationType();
   var isReload = navigationType === "reload";
+  var allowRestoreScroll =
+    navigationType === "back_forward" ||
+    (navigationType === "navigate" && referrerIsSameOrigin());
 
   if (isReload) {
     window.scrollTo(0, 0);
   } else if (!window.location.hash) {
-    try {
-      var saved = Number(localStorage.getItem(storageKey) || "0");
-      if (saved > 0) {
-        window.requestAnimationFrame(function () {
-          window.scrollTo(0, saved);
-        });
-      }
-    } catch (e) {}
+    if (allowRestoreScroll) {
+      try {
+        var saved = Number(localStorage.getItem(storageKey) || "0");
+        if (saved > 0) {
+          window.requestAnimationFrame(function () {
+            window.scrollTo(0, saved);
+          });
+        }
+      } catch (e) {}
+    } else {
+      window.scrollTo(0, 0);
+    }
   }
 
   var ticking = false;
