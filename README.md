@@ -1,41 +1,72 @@
 # Karina Vetlugina — Portfolio
 
-Personal portfolio site for an aspiring Business Analyst: education, projects (interactive folder UI), resume/cover links (envelope interaction), and contact.
+A single-page professional portfolio for **Karina Vetlugina**, an aspiring Business Analyst and Advanced Diploma student in **Computer Programming and Analysis** at George Brown Polytechnic. The site presents personal background, academic credentials, capstone-style projects, work experience, and contact information.
+
+**Live site:** [karinavetlugina.com](https://karinavetlugina.com)
+
+---
+
+## Highlights
+
+- **Responsive layout** with a collapsible navigation menu on smaller viewports.
+- **Accessible patterns:** skip link, semantic sections, ARIA where appropriate, and reduced-motion–aware behavior.
+- **Academic projects** shown as an interactive stacked “folder” UI (`<details>` / summary) with keyboard support and single-open accordion behavior.
+- **Resume & cover letter** access through a styled envelope interaction (hover on desktop, tap on touch).
+- **Fixed header** with scroll-direction behavior: hides when scrolling down, returns when scrolling up (disabled when `prefers-reduced-motion` is set or when the mobile menu is open).
+- **Open Graph** metadata (`og:title`, `og:description`, `og:url`, `og:image`, `og:site_name`) for link previews on social apps and messengers.
+
+---
 
 ## Tech stack
 
-- HTML5
-- CSS3 (custom properties, no preprocessor)
-- Vanilla JavaScript (mobile nav, accordion folders, header height for scroll offset, optional Brittany Signature font fallback)
+| Area        | Details |
+|------------|---------|
+| Markup     | HTML5 (single `index.html`) |
+| Styling    | CSS3 with custom properties; no preprocessor |
+| Scripting  | Vanilla JavaScript (modular IIFEs in `main.js`) |
+| Hosting    | Static files only — suitable for any static host (e.g. Vercel, Netlify, GitHub Pages) |
 
-## Fonts
+---
 
-- [Montserrat](https://fonts.google.com/specimen/Montserrat) & [Cedarville Cursive](https://fonts.google.com/specimen/Cedarville+Cursive) (Google Fonts)
-- [Brittany Signature](https://www.cdnfonts.com/brittany-signature.font) (CDNFonts)
+## Repository layout
 
-## Run locally
+```
+portfolio/
+├── index.html      # Full page content and document head (meta, Open Graph)
+├── styles.css      # Global styles and component layout
+├── main.js         # Nav, envelope (touch), accordion folders, header height, scroll-direction hide, font fallback
+├── assets/         # Images (hero, envelope, folders, thank-you, social preview)
+├── LICENSE         # MIT License (see below)
+└── README.md
+```
 
-Clone or download the project, then open `index.html` in a browser, or serve the folder with any static server, for example:
+---
+
+## Local development
+
+Open `index.html` directly in a browser, or serve the project root with any static file server:
 
 ```bash
 cd portfolio
 python3 -m http.server 8080
 ```
 
-Then visit `http://localhost:8080`.
+Then open `http://localhost:8080`.
 
-## Structure
+---
 
-```
-portfolio/
-├── index.html
-├── styles.css
-├── main.js
-└── assets/
-```
+## Typography
 
-To reduce weight, recompress PNGs (e.g. [Oxipng](https://github.com/shssoichiro/oxipng)) or lower JPEG quality on `hero-portrait.jpg` (~80–85%).
+- **[Montserrat](https://fonts.google.com/specimen/Montserrat)** — UI and body text (Google Fonts).
+- **[Cedarville Cursive](https://fonts.google.com/specimen/Cedarville+Cursive)** — signature fallback (Google Fonts).
+- **[Brittany Signature](https://www.cdnfonts.com/brittany-signature.font)** — primary hero signature (CDNFonts); if it fails to load, a class-based fallback is applied via `main.js`.
+
+---
 
 ## License
 
-Content and design © Karina Vetlugina unless otherwise noted.
+The **source code** in this repository (HTML, CSS, and JavaScript) is released under the [MIT License](LICENSE).
+
+Copyright © 2026 Karina Vetlugina.
+
+**Portfolio content** (biographical text, résumé-style copy, and original site imagery) is not covered by the MIT License and remains reserved unless stated otherwise. Third-party assets (e.g. fonts from Google Fonts and CDNFonts) follow their respective licenses.
