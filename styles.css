@@ -81,6 +81,29 @@ html {
   overscroll-behavior-y: none;
 }
 
+body {
+  margin: 0;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.78;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+main {
+  margin: 0;
+  overflow-x: clip;
+  max-width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -96,29 +119,6 @@ html {
     box-shadow: var(--shadow-sm);
     border-color: var(--color-border);
   }
-}
-
-main {
-  margin: 0;
-  overflow-x: clip;
-  max-width: 100%;
-  position: relative;
-  z-index: 0;
-}
-
-body {
-  margin: 0;
-  overflow-x: clip;
-  width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  font-family: var(--font-sans);
-  font-size: var(--text-body);
-  line-height: 1.78;
-  letter-spacing: 0.02em;
-  color: var(--color-text);
-  background: var(--color-bg);
 }
 
 h1,
@@ -1041,6 +1041,14 @@ html.force-signature-fallback .hero-name {
   .envelope-hitbox.is-open .envelope-paper-ui {
     pointer-events: auto;
   }
+
+  .folder-stack-hint--hover {
+    display: none;
+  }
+
+  .folder-stack-hint--touch {
+    display: inline;
+  }
 }
 
 .card-grid {
@@ -1180,16 +1188,6 @@ html.force-signature-fallback .hero-name {
   display: none;
 }
 
-@media (hover: none) {
-  .folder-stack-hint--hover {
-    display: none;
-  }
-
-  .folder-stack-hint--touch {
-    display: inline;
-  }
-}
-
 .folder-stack {
   display: flex;
   flex-direction: column;
@@ -1205,7 +1203,6 @@ html.force-signature-fallback .hero-name {
   pointer-events: none;
 }
 
-/* Only the folder directly below an open one overlaps its body; hide that tab, not every closed folder */
 .folder-stack:has(.folder-item[open]) .folder-item[open] + .folder-item .folder-tab {
   opacity: 0;
   visibility: hidden;
@@ -1243,7 +1240,6 @@ html.force-signature-fallback .hero-name {
   border: none;
   border-radius: 0;
   overflow: visible;
-  filter: none;
   transition: transform 0.28s var(--ease-folder), box-shadow 0.28s var(--ease-out-elegant);
 }
 
@@ -1363,7 +1359,6 @@ html.force-signature-fallback .hero-name {
   }
 }
 
-/* After hover rules so z-index 43 beats 41 when both apply (open + hover on another row) */
 .folder-stack:has(.folder-item[open]) .folder-item[open] {
   z-index: 52;
 }

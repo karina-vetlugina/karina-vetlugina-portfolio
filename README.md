@@ -39,4 +39,3 @@ To reduce weight, recompress PNGs (e.g. [Oxipng](https://github.com/shssoichiro/
 ## License
 
 Content and design © Karina Vetlugina unless otherwise noted.
-# portfolio
