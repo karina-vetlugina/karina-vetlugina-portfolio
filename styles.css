@@ -800,6 +800,7 @@ html.force-signature-fallback .hero-name {
   margin-inline: auto;
   cursor: pointer;
   outline: none;
+  touch-action: manipulation;
 }
 
 .envelope-hitbox:focus:not(:focus-visible) {
@@ -849,17 +850,19 @@ html.force-signature-fallback .hero-name {
   pointer-events: none;
 }
 
-.envelope-hitbox:hover .envelope-layer--closed,
-.envelope-hitbox:focus-within .envelope-layer--closed {
-  opacity: 0;
-  pointer-events: none;
-}
+@media (hover: hover) {
+  .envelope-hitbox:hover .envelope-layer--closed,
+  .envelope-hitbox:focus-within .envelope-layer--closed {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-.envelope-hitbox:hover .envelope-layer--open,
-.envelope-hitbox:focus-within .envelope-layer--open {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 3;
+  .envelope-hitbox:hover .envelope-layer--open,
+  .envelope-hitbox:focus-within .envelope-layer--open {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 3;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -941,9 +944,11 @@ html.force-signature-fallback .hero-name {
   box-sizing: border-box;
 }
 
-.envelope-hitbox:hover .envelope-paper-ui,
-.envelope-hitbox:focus-within .envelope-paper-ui {
-  pointer-events: auto;
+@media (hover: hover) {
+  .envelope-hitbox:hover .envelope-paper-ui,
+  .envelope-hitbox:focus-within .envelope-paper-ui {
+    pointer-events: auto;
+  }
 }
 
 .envelope-paper-buttons {
@@ -992,30 +997,43 @@ html.force-signature-fallback .hero-name {
   margin: 1.25rem 0 0;
   font-family: var(--font-sans);
   font-size: 0.875rem;
+  line-height: 1.55;
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
   text-align: center;
 }
 
+.envelope-hint--touch {
+  display: none;
+}
+
 @media (hover: none) {
-  .envelope-layer--closed {
+  .envelope-hint--hover {
+    display: none;
+  }
+
+  .envelope-hint--touch {
+    display: inline;
+  }
+
+  .envelope-hitbox.is-open .envelope-layer--closed {
     opacity: 0;
     pointer-events: none;
   }
 
-  .envelope-layer--open {
+  .envelope-hitbox.is-open .envelope-layer--open {
     opacity: 1;
     pointer-events: auto;
     z-index: 3;
   }
 
-  .envelope-paper-ui {
-    pointer-events: auto;
-  }
-
-  .envelope-streamers-img {
+  .envelope-hitbox.is-open .envelope-streamers-img {
     opacity: 1;
     transform: translateY(-50%) scaleY(1);
+  }
+
+  .envelope-hitbox.is-open .envelope-paper-ui {
+    pointer-events: auto;
   }
 }
 

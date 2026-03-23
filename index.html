@@ -164,7 +164,8 @@
               class="envelope-hitbox"
               tabindex="0"
               role="group"
-              aria-label="Resume and cover letter. Hover to open the envelope and access PDF links."
+              aria-expanded="false"
+              aria-label="Resume and cover letter. Open the envelope to access PDF links."
             >
             <div class="envelope-layers">
               <div class="envelope-layer envelope-layer--open">
@@ -226,14 +227,23 @@
                     src="assets/envelope-closed.png"
                     width="1024"
                     height="842"
-                    alt="Closed envelope illustration — hover or focus to open the letter and access resume and cover letter links"
+                    alt="Closed envelope illustration — hover on desktop or tap on touch devices to open the letter"
                     decoding="async"
                   />
                 </div>
               </div>
             </div>
             </div>
-            <p class="envelope-hint">Hover over the envelope to open the letter; on touch devices, the letter is shown open so you can tap the links.</p>
+            <p class="envelope-hint">
+              <span class="envelope-hint--hover">
+                Hover the envelope to open the letter,<br />
+                then select a document.
+              </span>
+              <span class="envelope-hint--touch">
+                Tap the envelope to open the letter,<br />
+                then select a document.
+              </span>
+            </p>
           </div>
         </div>
       </div>

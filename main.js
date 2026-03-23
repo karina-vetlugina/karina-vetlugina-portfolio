@@ -35,6 +35,52 @@
 (function () {
   "use strict";
 
+  var hitbox = document.querySelector(".envelope-hitbox");
+  if (!hitbox) return;
+
+  var noHoverMq = window.matchMedia("(hover: none)");
+
+  function touchPrimary() {
+    return noHoverMq.matches;
+  }
+
+  function setExpanded(open) {
+    hitbox.classList.toggle("is-open", open);
+    hitbox.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  hitbox.addEventListener("click", function (e) {
+    if (!touchPrimary()) return;
+    if (e.target.closest("a")) return;
+    setExpanded(!hitbox.classList.contains("is-open"));
+  });
+
+  hitbox.addEventListener("keydown", function (e) {
+    if (!touchPrimary()) return;
+    if (e.target !== hitbox) return;
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    setExpanded(!hitbox.classList.contains("is-open"));
+  });
+
+  function onNoHoverChange() {
+    if (!touchPrimary()) {
+      hitbox.classList.remove("is-open");
+      hitbox.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  if (typeof noHoverMq.addEventListener === "function") {
+    noHoverMq.addEventListener("change", onNoHoverChange);
+  } else if (typeof noHoverMq.addListener === "function") {
+    noHoverMq.addListener(onNoHoverChange);
+  }
+  window.addEventListener("resize", onNoHoverChange);
+})();
+
+(function () {
+  "use strict";
+
   var stack = document.querySelector(".folder-stack");
   if (!stack) return;
 
