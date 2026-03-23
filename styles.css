@@ -1486,9 +1486,10 @@ a.btn-artifact:hover {
 }
 
 .site-footer {
+  --footer-pad-block: clamp(2.35rem, 5vw, 3rem);
   background: var(--color-heading);
   color: var(--footer-text);
-  padding: clamp(2.35rem, 5vw, 3rem) 0;
+  padding: var(--footer-pad-block) 0 calc(var(--footer-pad-block) + env(safe-area-inset-bottom, 0px));
   margin-top: 0;
   border-top: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
 }
