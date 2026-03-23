@@ -81,41 +81,6 @@ html {
   overscroll-behavior-y: none;
 }
 
-/* Mobile: root + body use footer navy so theme-color + UA chrome sampling match the footer strip */
-@media (max-width: 768px) {
-  html {
-    background-color: var(--color-heading);
-  }
-
-  body {
-    background: var(--color-heading);
-  }
-}
-
-/* iOS Safari 26+: bottom bar tint samples fixed layers near the viewport bottom; complements theme-color. */
-.browser-chrome-tint {
-  display: none;
-}
-
-@supports (-webkit-text-size-adjust: none) and (font: -apple-system-body) and (-webkit-touch-callout: none) {
-  @media (max-width: 768px) {
-    .browser-chrome-tint {
-      display: block;
-      position: fixed;
-      bottom: -8px;
-      left: 0;
-      width: 100%;
-      min-height: 12px;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      background-color: var(--color-heading);
-      pointer-events: none;
-      z-index: 5;
-    }
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1554,10 +1519,9 @@ a.btn-artifact:hover {
 }
 
 .site-footer {
-  --footer-pad-block: clamp(2.35rem, 5vw, 3rem);
   background: var(--color-heading);
   color: var(--footer-text);
-  padding: var(--footer-pad-block) 0 calc(var(--footer-pad-block) + env(safe-area-inset-bottom, 0px));
+  padding: clamp(2.35rem, 5vw, 3rem) 0;
   margin-top: 0;
   border-top: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
 }
