@@ -28,10 +28,10 @@ Then visit `http://localhost:8080`.
 
 ```
 portfolio/
-├── index.html       # single page; Open Graph + theme-color in <head>
+├── index.html
 ├── styles.css
 ├── main.js
-└── assets/          # images referenced from index.html only
+└── assets/
 ```
 
 To reduce weight, recompress PNGs (e.g. [Oxipng](https://github.com/shssoichiro/oxipng)) or lower JPEG quality on `hero-portrait.jpg` (~80–85%).
