@@ -92,6 +92,30 @@ html {
   }
 }
 
+/* iOS Safari 26+: bottom bar tint samples fixed layers near the viewport bottom; complements theme-color. */
+.browser-chrome-tint {
+  display: none;
+}
+
+@supports (-webkit-text-size-adjust: none) and (font: -apple-system-body) and (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .browser-chrome-tint {
+      display: block;
+      position: fixed;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      min-height: 12px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background-color: var(--color-heading);
+      pointer-events: none;
+      z-index: 5;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
