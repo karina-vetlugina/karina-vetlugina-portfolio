@@ -1185,6 +1185,13 @@ html.force-signature-fallback .hero-name {
   pointer-events: none;
 }
 
+/* Only the folder directly below an open one overlaps its body; hide that tab, not every closed folder */
+.folder-stack:has(.folder-item[open]) .folder-item[open] + .folder-item .folder-tab {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .folder-stack-column {
     display: flex;
