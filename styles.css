@@ -81,6 +81,17 @@ html {
   overscroll-behavior-y: none;
 }
 
+/* Mobile: root + body use footer navy so theme-color + UA chrome sampling match the footer strip */
+@media (max-width: 768px) {
+  html {
+    background-color: var(--color-heading);
+  }
+
+  body {
+    background: var(--color-heading);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
